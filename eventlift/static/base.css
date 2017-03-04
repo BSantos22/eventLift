@@ -5,11 +5,13 @@ body {
 .btn {
     background-image: none;
     background-color: #2196f3;
+    color: white;
 }
 
 .btn:hover {
     background-image: none;
     background-color: #0D47A1;
+    color: white;
 }
 
 #brand-image {

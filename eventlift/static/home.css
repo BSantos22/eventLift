@@ -1,9 +1,27 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
+
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 .jumbotron {
-  height: 500px;
+    height: 500px;
+    position: relative;
+    background: #000 url("../static/Untitled.png") center center;
+    width: 100%;
+
+    background-size: cover;
+    overflow: hidden;
+}
+
+.input-group {
+    padding-top: 125px;
+}
+
+.info {
+  border-radius: 15px;
+  margin: 15px;
+  background-color: #f37e21;
+  opacity: 50%
 }
