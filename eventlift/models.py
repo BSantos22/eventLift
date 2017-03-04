@@ -77,6 +77,14 @@ def create_event(name, local, stdate, endate):
     else:
         return False
 
+def create_lift(owner, event, price, twoway, lftime, lfplace, numseats, emptyseats):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('INSERT INTO Lifts (owner, event, price, twoway, lftime, lfplace, numseats, emptyseats) values (?,?,?,?,?,?,?,?)', (owner, event, price, twoway, lftime, lfplace, numseats, emptyseats))
+    db.commit()
+    db.close()
+    return True
+
 def create_reservation(name, local, numseats):
     username = session['username']
     userid = get_userid(username)

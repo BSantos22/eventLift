@@ -67,3 +67,42 @@ def event(rowid):
         else:
             lift[3] = "No"
     return render_template('event.html', event=event, lifts=l)
+
+@app.route('/create_event', methods=['POST', 'GET'])
+def create_event():
+    if request.method == 'POST':
+        name = request.form['name']
+        local = request.form['local']
+        sdate = request.form['sdate']
+        edate = request.form['edate']
+        create_event = models.create_event(name, local, sdate, edate)
+        
+        if create_event:
+            event = models.get_event(name, local)
+            return redirect(url_for('event', rowid=event[0][4]))
+        else:
+            return "Failed to register"
+    else:
+        return render_template('create_event.html')
+
+@app.route('/event/<eventid>/create_lift', methods=['POST', 'GET'])
+def create_lift(eventid):
+    if request.method == 'POST':
+        ownerid = models.get_userid(session['username'])
+        price = request.form['price']
+        twoway = request.form['twoway']
+        lftime = request.form['lftime']
+        lfplace = request.form['lfplace']
+        numseats = request.form['numseats']
+        emptyseats = request.form['emptyseats']
+        if emptyseats < numseats:
+            create_lift = models.create_lift(ownerid, int(eventid), price, twoway, lftime, lfplace, numseats, emptyseats)
+        else:
+            create_lift = False;  
+
+        if create_lift:
+            return redirect(url_for('event', rowid=eventid))
+        else:
+            return "Failed to register"
+    else:
+        return render_template('create_lift.html')
