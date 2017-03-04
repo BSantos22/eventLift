@@ -40,5 +40,6 @@ def register():
 
 @app.route('/event/<rowid>')
 def event(rowid):
-    event = models.get_event(rowid)
-    return render_template('event.html', event=event)
+    event = models.get_event_by_id(rowid)
+    lifts = models.get_lifts_from_event(event[0][0], event[0][1])
+    return render_template('event.html', event=event, lifts=lifts)
