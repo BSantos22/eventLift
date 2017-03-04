@@ -6,20 +6,26 @@
 
 <h1>{{ event[0][0] }}</h1>
 
+<div class="event-info">
 <p>Location: {{ event[0][1] }}</p>
 <p>Start time: {{ event[0][2] }}</p>
 <p>End time: {{ event[0][3] }}</p>
+</div>
 
 <h2>Lifts</h2>
+{% for lift in lifts %}
+<div class="lift-info">
+	<p>Owner: {{ lift[0] }}</p>
+	<p>Event: {{ lift[1] }}</p>
+	<p>Price: {{ lift[2] }}</p>
+	<p>Two way: {{ lift[3] }}</p>
+	<p>Leave time: {{ lift[4] }}</p>
+	<p>Leave place: {{ lift[5] }}</p>
+	<p>Num seats: {{ lift[6] }}</p>
+	<p>Num empty seats: {{ lift[7] }}</p>
+</div>
+{% endfor %}
 
-<p>Owner: {{ lifts[0][0] }}</p>
-<p>Event: {{ lifts[0][1] }}</p>
-<p>Price: {{ lifts[0][2] }}</p>
-<p>Two way: {{ lifts[0][3] }}</p>
-<p>Leave time: {{ lifts[0][4] }}</p>
-<p>Leave place: {{ lifts[0][5] }}</p>
-<p>Num seats: {{ lifts[0][6] }}</p>
-<p>Num empty seats: {{ lifts[0][7] }}</p>
 
 {% endblock %}
 
