@@ -61,4 +61,8 @@ def event(rowid):
 
     for lift in l:
         lift[0] = (models.get_username_by_id(lift[0]))[0][0]
+        if lift[3] == 1:
+            lift[3] = "Yes"
+        else:
+            lift[3] = "No"
     return render_template('event.html', event=event, lifts=l)
