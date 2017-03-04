@@ -105,10 +105,19 @@ def create_reservation(name, local, numseats):
 def get_userid(username):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    cur.execute('SELECT rowid FROM Users WHERE user=?', username)
+    cur.execute('SELECT rowid FROM Users WHERE user=?', (username,))
     userid = cur.fetchall()
     db.close()
     return userid
+
+
+def get_user_data(username):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT user, email, phone FROM Users WHERE user=?', (username,))
+    userdata = cur.fetchall()
+    db.close()
+    return userdata
 
 def get_username_by_id(rowid):
     db = sqlite3.connect(DATABASE)
@@ -121,8 +130,8 @@ def get_username_by_id(rowid):
 def get_user_lifts(username):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    userid = get_userid(username)
-    cur.execute('SELECT * FROM Lifts WHERE owner=? JOIN Events ON Lifts.event = Events.rowid', userid)
+    userid = get_userid(username)[0][0]
+    cur.execute('SELECT * FROM Lifts JOIN Events ON (Lifts.event = Events.rowid) WHERE owner=?', (userid,))
     user_lifts = cur.fetchall()
     db.close()
     return user_lifts
@@ -130,8 +139,8 @@ def get_user_lifts(username):
 def get_user_reservations(username):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    userid = get_userid(username)
-    cur.execute('SELECT * FROM Reservations JOIN Lifts ON Lifts.rowid = Reservations.lift JOIN Events ON  Lifts.event = Events.rowid')
+    userid = get_userid(username)[0][0]
+    cur.execute('SELECT * FROM Reservations JOIN Lifts ON Lifts.rowid = Reservations.lift JOIN Events ON  Lifts.event = Events.rowid WHERE Reservations.user=?', (userid,))
     user_reservations = cur.fetchall()
     db.close()
     return user_reservations

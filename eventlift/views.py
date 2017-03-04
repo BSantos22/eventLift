@@ -47,10 +47,12 @@ def register():
 
 @app.route('/profile')
 def profile():
-    if session.get('username'):
-        if not session['username']:
-            return redirect(url_for('index'))
-    return render_template('profile.html')
+    if not session.get('username'):
+        return redirect(url_for('index'))
+    user_data = models.get_user_data(session['username'])
+    user_lifts = models.get_user_lifts(session['username'])
+    user_reservations = models.get_user_reservations(session['username'])
+    return render_template('profile.html', user_data=user_data, user_lifts=user_lifts, user_reservations=user_reservations)
 
 
 @app.route('/signout')
