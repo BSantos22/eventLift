@@ -54,4 +54,11 @@ def signout():
 def event(rowid):
     event = models.get_event_by_id(rowid)
     lifts = models.get_lifts_from_event(event[0][0], event[0][1])
-    return render_template('event.html', event=event, lifts=lifts)
+    l = []
+    for lift in lifts:
+        ll = list(lift)
+        l.append(ll)
+
+    for lift in l:
+        lift[0] = (models.get_username_by_id(lift[0]))[0][0]
+    return render_template('event.html', event=event, lifts=l)

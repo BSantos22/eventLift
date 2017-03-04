@@ -16,13 +16,11 @@
 {% for lift in lifts %}
 <div class="lift-info">
 	<p>Owner: {{ lift[0] }}</p>
-	<p>Event: {{ lift[1] }}</p>
 	<p>Price: {{ lift[2] }}</p>
 	<p>Two way: {{ lift[3] }}</p>
 	<p>Leave time: {{ lift[4] }}</p>
 	<p>Leave place: {{ lift[5] }}</p>
-	<p>Num seats: {{ lift[6] }}</p>
-	<p>Num empty seats: {{ lift[7] }}</p>
+	<p>Num seats: {{ lift[7] }}/{{ lift[6] }}</p>
 </div>
 {% endfor %}
 

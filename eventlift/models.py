@@ -101,3 +101,13 @@ def get_userid(username):
     userid = cur.fetchall()
     db.close()
     return userid
+
+def get_username_by_id(rowid):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT user FROM Users WHERE rowid=?', (rowid,))
+    name = cur.fetchall()
+    db.close()
+    return name
+
+
