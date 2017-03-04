@@ -110,4 +110,20 @@ def get_username_by_id(rowid):
     db.close()
     return name
 
+def get_user_lifts(username):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    userid = get_userid(username)
+    cur.execute('SELECT * FROM Lifts WHERE owner=? JOIN Events ON Lifts.event = Events.rowid', userid)
+    user_lifts = cur.fetchall()
+    db.close()
+    return user_lifts
 
+def get_user_reservations(username):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    userid = get_userid(username)
+    cur.execute('SELECT * FROM Reservations JOIN Lifts ON Lifts.rowid = Reservations.lift JOIN Events ON  Lifts.event = Events.rowid')
+    user_reservations = cur.fetchall()
+    db.close()
+    return user_reservations

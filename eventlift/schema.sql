@@ -33,8 +33,8 @@ CREATE TABLE Lifts(
 );
 
 CREATE TABLE Reservations(
-    event REFERENCES Events(rowID),
-    user REFERENCES Events(rowID),
+    lift REFERENCES Lifts(rowID),
+    user REFERENCES Users(rowID),
     numseats INTEGER NOT NULL CHECK (numseats > 0)
 );
 
@@ -44,7 +44,7 @@ CREATE TRIGGER IF NOT EXISTS RemoveEmptySeat
     BEGIN
         UPDATE Lifts
         SET emptyseats = emptyseats - NEW.numseats
-        WHERE (Lifts.rowID = NEW.event);
+        WHERE (Lifts.rowID = NEW.lift);
     END;
 
 CREATE TRIGGER IF NOT EXISTS CancelReservation
@@ -52,7 +52,7 @@ CREATE TRIGGER IF NOT EXISTS CancelReservation
     BEGIN
         Update Lifts
         SET emptyseats = emptyseats + OLD.numseats
-        WHERE (Lifts.rowID = OLD.event);
+        WHERE (Lifts.rowID = OLD.lift);
     END;
 
 
