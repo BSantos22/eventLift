@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>EventLift</title>
     <!-- Latest compiled and minified CSS -->
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../static/test.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -37,11 +37,18 @@
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
                   {% if session['username'] is not defined %}
-                  <li class="active"><a href="/login">Login<span class="sr-only">(current)</span></a></li>
+                  <li><a href="/login">Login<span class="sr-only">(current)</span></a></li>
                   <li><a href="/register">Register<span class="sr-only">(current)</span></a></li>
                   {% else %}
-                  <li class="active"><a href="/signout">Sign Out<span class="sr-only">(current)</span></a></li>
-                  <li><a href="/profile">{{ session['username'] }}<span class="sr-only">(current)</span></a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ session['username'] }}<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/profile">View Profile</a></li>
+                          <li><a href="/create_event">Create Event</a></li>
+                          <li><a href="">TODO: My Events</a></li>
+                          <li><a href="/signout">Sign Out</a></li>
+                      </ul>
+                  </li>
                   {% endif %}
               </ul>
           </div>
@@ -57,10 +64,4 @@
         {% block footer %} {% endblock %}
     </div>
 </body>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 </html>
