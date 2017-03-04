@@ -1,9 +1,17 @@
 body {
-  background-color: rgb(111, 147, 255);
+    background-color: #2196f3;
 }
 
-#content {
-  position: absolute;
-  top: 50px;
-  padding: 15px;
+.btn {
+    background-image: none;
+    background-color: #2196f3;
+}
+
+.btn:hover {
+    background-image: none;
+    background-color: #0D47A1;
+}
+
+#brand-image {
+    max-height: 50px;
 }
