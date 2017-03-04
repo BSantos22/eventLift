@@ -1,19 +1,26 @@
 from eventlift import app
 import sqlite3
-from flask import g
 
 DATABASE = 'eventlift/schema.db'
 
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
-
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
+def register_user(username, password, email):
+    users = get_users(username, password)
+    if not users:
+        db = sqlite3.connect(DATABASE)
+        cur = db.cursor()
+        cur.execute('INSERT INTO Users (user,pass,email) VALUES (?,?,?)',
+                    (username, password, email))
+        db.commit()
         db.close()
+        return True
+    else:
+        return False
+
+
+def get_users(username, password):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT user,pass FROM Users WHERE user=? AND pass=?', (username, password))
+    users = cur.fetchall()
+    db.close()
+    return users
