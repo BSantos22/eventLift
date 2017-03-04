@@ -1,9 +1,11 @@
 from eventlift import app, models
 from flask import render_template, request, redirect, url_for, session
 
+
 @app.route('/')
 def index():
     return render_template('home.html')
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -18,6 +20,23 @@ def login():
             return "Show failed login page"
     else:
         return render_template('login.html')
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        registered = models.register_user(username, password, email)
+        if registered:
+            session['username'] = username
+            return redirect(url_for('index'))
+        else:
+            return "Failed to register"
+    else:
+        return render_template('register.html')
+
 
 @app.route('/event/<rowid>')
 def event(rowid):

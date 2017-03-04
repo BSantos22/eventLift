@@ -3,8 +3,9 @@ import sqlite3
 
 DATABASE = 'eventlift/schema.db'
 
+
 def register_user(username, password, email):
-    users = get_users(username, password)
+    users = exists_users(username, password)
     if not users:
         db = sqlite3.connect(DATABASE)
         cur = db.cursor()
@@ -15,6 +16,17 @@ def register_user(username, password, email):
         return True
     else:
         return False
+
+
+def exists_user(username):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT user FROM Users WHERE user=?', (username,))
+    users = cur.fetchall()
+    db.close()
+    if not users:
+        return False
+    return True
 
 
 def get_users(username, password):
