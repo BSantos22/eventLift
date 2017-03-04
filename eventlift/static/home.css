@@ -20,8 +20,8 @@ body {
 }
 
 .info {
-  border-radius: 15px;
-  margin: 15px;
-  background-color: #f37e21;
-  opacity: 50%
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
+  background-color: #0D47A1;
 }
