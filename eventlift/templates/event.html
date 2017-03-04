@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %} {% block header %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>EventLift</title>
+{% endblock %}
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../static/custom.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+{% block content %}
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
+<h1>{{ event[0][0] }}</h1>
 
-<body>
-    <h1> {{ event }} </h1>
+<p>Location: {{ event[0][1] }}</p>
+<p>Start time: {{ event[0][2] }}</p>
+<p>End time: {{ event[0][3] }}</p>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-</body>
+<h2>Lifts</h2>
 
-</html>
+<p>Owner: {{ lifts[0][0] }}</p>
+<p>Event: {{ lifts[0][1] }}</p>
+<p>Price: {{ lifts[0][2] }}</p>
+<p>Two way: {{ lifts[0][3] }}</p>
+<p>Leave time: {{ lifts[0][4] }}</p>
+<p>Leave place: {{ lifts[0][5] }}</p>
+<p>Num seats: {{ lifts[0][6] }}</p>
+<p>Num empty seats: {{ lifts[0][7] }}</p>
+
+{% endblock %}
+
+{% block footer %} {% endblock %}

@@ -46,13 +46,22 @@ def get_event(name, local):
     db.close()
     return event
 
-def get_event(rowid):
+def get_event_by_id(rowid):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    cur.execute('SELECT * FROM Events WHERE rowid=?', rowid)
+    cur.execute('SELECT *,rowid FROM Events WHERE rowid=?', rowid)
     event = cur.fetchall()
     db.close()
     return event
+
+def get_lifts_from_event(name, local):
+    event = get_event(name, local)
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Lifts WHERE event=?', (event[0][4],))
+    lifts = cur.fetchall()
+    db.close()
+    return lifts
 
 
 def create_event(name, local, stdate, endate):
