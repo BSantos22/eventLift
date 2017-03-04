@@ -4,13 +4,13 @@ import sqlite3
 DATABASE = 'eventlift/schema.db'
 
 
-def register_user(username, password, email):
+def register_user(username, password, email, phone):
     users = exists_user(username)
     if not users:
         db = sqlite3.connect(DATABASE)
         cur = db.cursor()
-        cur.execute('INSERT INTO Users (user,pass,email) VALUES (?,?,?)',
-                    (username, password, email))
+        cur.execute('INSERT INTO Users (user,pass,email, phone) VALUES (?,?,?,?)',
+                    (username, password, email, phone))
         db.commit()
         db.close()
         return True

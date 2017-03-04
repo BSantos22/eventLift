@@ -34,7 +34,8 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
-        registered = models.register_user(username, password, email)
+        phone = request.form['phone']
+        registered = models.register_user(username, password, email, phone)
         if registered:
             session['username'] = username
             return redirect(url_for('index'))
