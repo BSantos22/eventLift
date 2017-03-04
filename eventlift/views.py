@@ -38,6 +38,12 @@ def register():
         return render_template('register.html')
 
 
+@app.route('/signout')
+def signout():
+    session.clear()
+    return redirect(url_for('index'))
+
+
 @app.route('/event/<rowid>')
 def event(rowid):
     event = models.get_event(rowid)
