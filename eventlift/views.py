@@ -45,6 +45,14 @@ def register():
         return render_template('register.html')
 
 
+@app.route('/profile')
+def profile():
+    if session.get('username'):
+        if not session['username']:
+            return redirect(url_for('index'))
+    return render_template('profile.html')
+
+
 @app.route('/signout')
 def signout():
     session.clear()
@@ -76,7 +84,7 @@ def create_event():
         sdate = request.form['sdate']
         edate = request.form['edate']
         create_event = models.create_event(name, local, sdate, edate)
-        
+
         if create_event:
             event = models.get_event(name, local)
             return redirect(url_for('event', rowid=event[0][4]))
@@ -98,7 +106,7 @@ def create_lift(eventid):
         if emptyseats < numseats:
             create_lift = models.create_lift(ownerid, int(eventid), price, twoway, lftime, lfplace, numseats, emptyseats)
         else:
-            create_lift = False;  
+            create_lift = False;
 
         if create_lift:
             return redirect(url_for('event', rowid=eventid))
