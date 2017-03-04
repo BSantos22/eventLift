@@ -9,6 +9,9 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    if session.get('username'):
+        if session['username']:
+            return redirect(url_for('index'))
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -24,6 +27,9 @@ def login():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    if session.get('username'):
+        if session['username']:
+            return redirect(url_for('index'))
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -36,6 +42,12 @@ def register():
             return "Failed to register"
     else:
         return render_template('register.html')
+
+
+@app.route('/signout')
+def signout():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 @app.route('/event/<rowid>')
