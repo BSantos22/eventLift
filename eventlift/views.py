@@ -18,3 +18,8 @@ def login():
             return "Show failed login page"
     else:
         return render_template('login.html')
+
+@app.route('/event/<rowid>')
+def event(rowid):
+    event = models.get_event(rowid)
+    return render_template('event.html', event=event)
