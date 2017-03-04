@@ -41,7 +41,7 @@ def get_users(username, password):
 def get_event(name, local):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    cur.execute('SELECT * FROM Events WHERE name=? AND local=?', (name, local))
+    cur.execute('SELECT *,rowid FROM Events WHERE name=? AND local=?', (name, local))
     event = cur.fetchall()
     db.close()
     return event
@@ -67,3 +67,28 @@ def create_event(name, local, stdate, endate):
         return True
     else:
         return False
+
+def create_reservation(name, local, numseats):
+    username = session['username']
+    userid = get_userid(username)
+    event = get_event(name, local)
+
+    if event:
+        db = sqlite3.connect(DATABASE)
+        cur = db.cursor()
+        cur.execute('INSERT INTO Reservations(event, user, numseats) VALUES (?,?,?)',
+                    (event['rowid'], userid, numseats))
+        db.commit()
+        db.close()
+        return True
+    else:
+        return False
+
+
+def get_userid(username):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT rowid FROM Users WHERE user=?', username)
+    userid = cur.fetchall()
+    db.close()
+    return userid
