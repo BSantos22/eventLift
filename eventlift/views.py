@@ -1,6 +1,6 @@
-from eventlift import app
+from eventlift import app, models
 
 
 @app.route('/')
 def index():
-    return "EventLift"
+    return 'EventLift'
