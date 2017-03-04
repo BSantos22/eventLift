@@ -26,9 +26,6 @@ def get_users(username, password):
     return users
 
 
-
-
-#ver eventos, criar evento
 def get_event(name, local):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
@@ -36,6 +33,7 @@ def get_event(name, local):
     event = cur.fetchall()
     db.close()
     return event
+
 
 def create_event(name, local, stdate, endate):
     event = get_event(name, local)
