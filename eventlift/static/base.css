@@ -16,5 +16,13 @@ body {
 }
 
 #brand-image {
-    max-height: 50px;
+    max-height: 65px;
+}
+
+#user-image {
+    max-height: 35px;
+}
+
+#navbar{
+  text-align: center;
 }
