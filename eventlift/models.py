@@ -129,7 +129,7 @@ def get_user_lifts(username):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
     userid = get_userid(username)[0][0]
-    cur.execute('SELECT * FROM Lifts JOIN Events ON (Lifts.event = Events.rowid) WHERE owner=?', (userid,))
+    cur.execute('SELECT *,Lifts.rowid FROM Lifts JOIN Events ON (Lifts.event = Events.rowid) WHERE owner=?', (userid,))
     user_lifts = cur.fetchall()
     db.close()
     return user_lifts

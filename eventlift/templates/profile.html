@@ -18,9 +18,9 @@
                         </div>
                         <div class="panel-body">
                             {% for lift in user_lifts %}
-                            <div href="#" class="list-group-item">
+                            <div onclick="window.location.href='/lift/{{ lift[12] }}'" class="list-group-item">
                                 <h4>{{lift[8]}} - {{lift[9]}} - {{lift[10]}}</h4>
-                                <h5>{{lift[6]}} seats</h5>
+                                <h5>{{lift[6]}} total seats</h5>
                                 <!-- Evento - nome 8, localização 9, data 10
                                        Boleia - Nr lugares disponibilizados 6-->
                             </div>
@@ -35,8 +35,9 @@
                         </div>
                         <div class="panel-body">
                           {% for reservation in user_reservations %}
-                          <div href="#" class="list-group-item">
-                              <h4> {{reservation[0]}} </h4>
+                          <div onclick="window.location.href='/lift/{{ reservation[1] }}'" class="list-group-item">
+                              <h4>{{ reservation[8] }} - {{ reservation[12] }} - {{ reservation[13] }}</h4>
+                              <h5>{{ reservation[2] }} seats reserved</h5>
                           </div>
                           {% endfor %}
                         </div>
