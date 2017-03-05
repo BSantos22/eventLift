@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.class1{
+.class1 {
     margin-top: 100px;
 }
 
@@ -26,4 +26,20 @@ body {
 
 .lift-price {
     text-decoration: bold;
+}
+
+.panel-default>.panel-heading {
+    color: white;
+    background-color: #2196f3;
+    background-image: none;
+    font-weight: 900;
+}
+
+#cenas {
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.input-group-btn {
+  border-radius: 3px;
 }

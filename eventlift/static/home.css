@@ -8,7 +8,7 @@ body {
 .jumbotron {
     height: 500px;
     position: relative;
-    background: #000 url("../static/Untitled.png") center center;
+    background: #000 url("../static/jumbottron.png") center center;
     width: 100%;
     background-size: cover;
     overflow: hidden;

@@ -7,25 +7,49 @@
             <div class="row">
                 <div class="jumbotron class1">
 
-                    <div class="event-info">
+                    <div class="event-info text-center">
                         <h1>{{ lift[0][8] }}</h1>
-                        <h2>{{ lift[0][9] }},  {{ lift[0][10] }} - {{ lift[0][11] }}</h2>
+                        <h2>{{ lift[0][9] }}</h2>
+                        <ul class="nav nav-pills nav-justified text-center" role="tablist">
+                            <li>{{ lift[0][10] }}</li>
+                            <li>{{ lift[0][11] }}</li>
+                        </ul>
                         <br>
-                        <h2> Lift: </h2>
 
-                        <h3>Time:  {{ lift[0][4] }} </h3>
-                        <h3>Local:  {{ lift[0][5] }} </h3>
-                        <h3>Seats:  {{ lift[0][6] }}/{{ lift[0][7] }} remaining </h3>
-                        <h3>Price: {{ lift[0][2] }}€ </h3>
-                        <h3>Both ways:
-                            {% if lift[0][3] == 0 %}
-                            No
-                            {% else %}
-                            Yes
+
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Lift</div>
+
+                            <!-- Table -->
+                            <table class="table table-bordered text-center">
+                                <tr>
+                                    <th class="text-center" colspan="2"> Time </th>
+                                    <th class="text-center" colspan="4"> Local </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> {{ lift[0][4] }} </td>
+                                    <td colspan="4"> {{ lift[0][5] }} </td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2"> Seats </th>
+                                    <th class="text-center" colspan="2"> Price </th>
+                                    <th class="text-center" colspan="2"> Both ways? </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> {{ lift[0][7] }}/{{ lift[0][6] }} </td>
+                                    <td colspan="2"> {{ lift[0][2] }} </td>
+                                    <td colspan="2"> {% if lift[0][3] == 0 %} No {% else %} Yes
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <h3>
                             {% endif %}
                         <form method="POST" action="/join_lift">
                             <input type="hidden" value="{{ liftid }}" name="lift"/>
-                            <input type="number" name="seats">
+                            <input type="number" id="cenas" name="seats" class="text-center" placeholder="Number of Seats">
                             <span class="input-group-btn">
                               <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Join Lift</button>
                             </span>
