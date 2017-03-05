@@ -15,26 +15,31 @@ body {
     color: white;
 }
 
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:focus,
-.navbar-default .navbar-nav > .open > a:hover {
-  background: none;
-  box-shadow: none;
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background: none;
+    box-shadow: none;
 }
 
 #brand-image {
     max-height: 65px;
 }
 
-#user-image {
+#user-icon {
     max-height: 35px;
     margin: -10px;
+    color: #2196f3;
 }
 
-#navbar{
-  text-align: center;
+#user-icon:hover {
+    max-height: 35px;
+    margin: -10px;
+    color: #0D47A1;
 }
 
-#navbar li{
-  padding-top: 7px;
+#navbar {
+    text-align: center;
+}
+
+#navbar li {
+    padding-top: 7px;
 }

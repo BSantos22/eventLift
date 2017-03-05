@@ -41,7 +41,7 @@
                   <li><a href="/register">Register<span class="sr-only">(current)</span></a></li>
                   {% else %}
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"><img id="user-image" src="{{ url_for('static', filename='user_icon.png') }}"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" id="user-icon" aria-hidden="true"></span></a>
                       <ul class="dropdown-menu">
                           <li><a href="/profile">View Profile</a></li>
                           <li><a href="/create_event">Create Event</a></li>
