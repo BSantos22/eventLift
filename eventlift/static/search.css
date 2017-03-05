@@ -1,0 +1,11 @@
+.result-container:first-child {
+    margin-top: 52px;
+}
+
+.result-container {
+    cursor: pointer;
+}
+
+.jumbotron {
+    padding-top: 70px;
+}

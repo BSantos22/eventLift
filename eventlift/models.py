@@ -159,7 +159,7 @@ def search_events(search):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
     string = "%" + str(search) + "%"
-    cur.execute('SELECT * FROM Events WHERE local LIKE ? OR name LIKE ?', (string, string))
+    cur.execute('SELECT *,rowid FROM Events WHERE local LIKE ? OR name LIKE ?', (string, string))
     results = cur.fetchall()
     db.close()
     return results
