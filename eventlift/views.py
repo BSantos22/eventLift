@@ -132,3 +132,8 @@ def create_lift(eventid):
             return "Failed to register"
     else:
         return render_template('create_lift.html')
+
+@app.route('/lift/<liftid>')
+def view_lift(liftid):
+    lift = models.get_lift_by_id(liftid)
+    return render_template('lift.html', lift=lift)

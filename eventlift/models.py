@@ -148,7 +148,6 @@ def get_user_reservations(username):
 def search_lifts(search):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    print(type(search))
     string = "%" + str(search) + "%"
     cur.execute('SELECT *,l.rowid FROM Lifts l LEFT JOIN Events e ON l.event = e.rowid WHERE event LIKE ? OR lfplace LIKE ?', (string, string))
     results = cur.fetchall()
@@ -163,3 +162,11 @@ def search_events(search):
     results = cur.fetchall()
     db.close()
     return results
+
+def get_lift_by_id(rowid):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Lifts JOIN Events ON Lifts.event = Events.rowID WHERE Lifts.rowid=?', (rowid))
+    lift = cur.fetchall()
+    db.close()
+    return lift;
