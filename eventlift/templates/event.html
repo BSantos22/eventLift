@@ -8,10 +8,9 @@
                 <div class="jumbotron class1">
 
                     <div class="event-info ">
-                        <h1> {{ event[0][0]}}</h1>
-                        <h3>Location: {{ event[0][1] }}</h3>
-                        <h3>Start time: {{ event[0][2] }}</h3>
-                        <h3>End time: {{ event[0][3] }}</h3>
+                        <h1> {{ event[0][0] }} </h1>
+                        <h2> {{ event[0][1] }} </h2>
+                        <h3> {{ event[0][2] }} - {{ event[0][3] }} </h3>
                     </div>
 
                     <hr>
@@ -21,18 +20,20 @@
                             window.location.href = window.location.pathname + "/create_lift";
                         }
                     </script>
-                    <h2>Lifts</h2> <button onclick="gotocreatelift()">Add lift</button> {% for lift in lifts %}
-                    <div class="lift-info">
-                        <p>Owner: {{ lift[0] }}</p>
-                        <p>Price: {{ lift[2] }}</p>
-                        <p>Two way: {{ lift[3] }}</p>
-                        <p>Leave time: {{ lift[4] }}</p>
-                        <p>Leave place: {{ lift[5] }}</p>
-                        <p>Num seats: {{ lift[7] }}/{{ lift[6] }}</p>
-                        <hr>
+                    <h2 id="lifts-title">Lifts</h2> <button id="addlift" class="btn btn-lg btn-primary btn-block btn-search" onclick="gotocreatelift()">Add lift</button>
+                    <div class="list-group">
+                        {% for lift in lifts %}
+                            <div class="result-container list-group-item">
+                                {% if lift[3] == "Yes" %}
+                                <span class="glyphicon glyphicon-transfer two-way"></span>
+                                {% endif %}
+                                <h3>{{ lift[5] }} - {{ lift[4] }}</h3>
+                                <p>By: {{ lift[0] }}</p>
+                                <p class="lift-price">{{ lift[2] }}€</p>
+                                <p>{{ lift[7] }}/{{ lift[6] }} places left</p>                                
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-
                 </div>
             </div>
         </div>

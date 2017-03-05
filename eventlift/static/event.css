@@ -5,3 +5,25 @@ body {
 .class1{
     margin-top: 100px;
 }
+
+#addlift {
+    width: 100px;
+    display: inline-block;
+    float: right;
+}
+
+#lifts-title {
+    display: inline-block;
+}
+
+.two-way {
+    color: green;
+    float: right;
+    height: 25px;
+    width: 25px;
+    font-size: 25px;
+}
+
+.lift-price {
+    text-decoration: bold;
+}
