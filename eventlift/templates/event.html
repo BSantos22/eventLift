@@ -20,7 +20,12 @@
 
 					<hr>
 
-					<h2>Lifts</h2> <button>Add lift</button>
+                    <script>
+                        function gotocreatelift() {
+                            window.location.href = window.location.pathname + "/create_lift";
+                        }
+                    </script>
+					<h2>Lifts</h2> <button onclick="gotocreatelift()">Add lift</button>
 					{% for lift in lifts %}
 					<div class="lift-info">
 						<p>Owner: {{ lift[0] }}</p>
