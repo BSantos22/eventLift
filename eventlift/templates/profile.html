@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="jumbotron">
                     <h1 class="text-center">{{ session['username'] }}</h1>
-                    <h3 class="text-center"> User Info</h3>
-                    <h4>E-Mail: {{user_data[0][1]}}</h4>
-                    <h4>Phone: {{user_data[0][2]}}</h4>
-
+                    <ul class="nav nav-pills nav-justified text-center" role="tablist">
+                        <li>{{user_data[0][1]}}</li>
+                        <li>{{user_data[0][2]}}</li>
+                    </ul>
                     <hr>
 
                     <div class="list-group">
-                        <h3 class="list-group-item-heading text-center">List of lifts</h3> {% for lift in user_lifts %}
+                        <h3 id="lifts-header" class="list-group-item-heading text-center">Lifts</h3> {% for lift in user_lifts %}
                         <div href="#" class="list-group-item">
                             <h4>{{lift[8]}} - {{lift[9]}} - {{lift[10]}}</h4>
                             <h5>{{lift[6]}} seats</h5>
@@ -24,7 +24,7 @@
                     </div>
                     <hr>
                     <div class="list-group">
-                        <h3 class="list-group-item-heading text-center">List of reservations</h3> {% for reservation in user_reservations %}
+                        <h3 id="reser-header" class="list-group-item-heading text-center">Reservations</h3> {% for reservation in user_reservations %}
                         <div href="#" class="list-group-item">
                             <h4> {{reseservation[0]}} </h4>
                         </div>

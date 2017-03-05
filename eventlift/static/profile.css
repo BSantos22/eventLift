@@ -1,3 +1,19 @@
 #content {
     margin-top: 70px;
 }
+
+
+
+#lifts-header {
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px;
+}
+
+#reser-header {
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px;
+}
