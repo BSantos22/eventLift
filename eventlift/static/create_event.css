@@ -1,7 +1,5 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+#content {
+    margin-top: 70px;
 }
 
 .form-create-event {
@@ -9,13 +7,16 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
+
 .form-create-event .form-create-event-heading,
 .form-create-event .checkbox {
   margin-bottom: 10px;
 }
+
 .form-create-event .checkbox {
   font-weight: normal;
 }
+
 .form-create-event .form-control {
   position: relative;
   height: auto;
@@ -26,9 +27,11 @@ body {
   font-size: 16px;
   border-radius: 0px;
 }
+
 .form-create-event .form-control:focus {
   z-index: 2;
 }
+
 .form-create-event input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
