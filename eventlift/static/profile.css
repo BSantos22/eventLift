@@ -17,3 +17,10 @@
   text-align: center;
   margin: 20px;
 }
+
+.panel-default>.panel-heading {
+  color: white;
+  background-color: #2196f3;
+  background-image: none;
+  font-weight: 900;
+}

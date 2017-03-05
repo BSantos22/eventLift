@@ -12,23 +12,34 @@
                     </ul>
                     <hr>
 
-                    <div class="list-group">
-                        <h3 id="lifts-header" class="list-group-item-heading text-center">Lifts</h3> {% for lift in user_lifts %}
-                        <div href="#" class="list-group-item">
-                            <h4>{{lift[8]}} - {{lift[9]}} - {{lift[10]}}</h4>
-                            <h5>{{lift[6]}} seats</h5>
-                            <!-- Evento - nome 8, localização 9, data 10
-                                     Boleia - Nr lugares disponibilizados 6-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Lifts</h3>
                         </div>
-                        {% endfor %}
+                        <div class="panel-body">
+                            {% for lift in user_lifts %}
+                            <div href="#" class="list-group-item">
+                                <h4>{{lift[8]}} - {{lift[9]}} - {{lift[10]}}</h4>
+                                <h5>{{lift[6]}} seats</h5>
+                                <!-- Evento - nome 8, localização 9, data 10
+                                       Boleia - Nr lugares disponibilizados 6-->
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                     <hr>
-                    <div class="list-group">
-                        <h3 id="reser-header" class="list-group-item-heading text-center">Reservations</h3> {% for reservation in user_reservations %}
-                        <div href="#" class="list-group-item">
-                            <h4> {{reseservation[0]}} </h4>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Reservations</h3>
                         </div>
-                        {% endfor %}
+                        <div class="panel-body">
+                          {% for reservation in user_reservations %}
+                          <div href="#" class="list-group-item">
+                              <h4> {{reseservation[0]}} </h4>
+                          </div>
+                          {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
