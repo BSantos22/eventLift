@@ -25,9 +25,10 @@
                             <div onclick="window.location.href='lift/{{ result[12] }}'" class="result-container list-group-item">
                         {% endif %}
 
-                        {% for attr in result %}
-                            <p> {{ attr }} </p>
-                        {% endfor %}
+                        <h2> {{ result[0] }} </h2>
+                        <h3> {{ result[1] }} </h3>
+                        <h4> {{ result[2] }} -  {{ result[3]}} </h4>
+
                         </div>
                     {% endfor %}
                     </div>

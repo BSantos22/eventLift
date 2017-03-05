@@ -6,14 +6,14 @@
     <title>EventLift</title>
     <!-- Latest compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" href="../static/test.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='test.ico') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="../static/base.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 
     {% block head %} {% endblock %}
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-              <a href="/"><img alt="Brand" id="brand-image" src="../static/teste.png"></a>
+              <a href="/"><img alt="Brand" id="brand-image" src="{{ url_for('static', filename='teste.png') }}"></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
                   <li><a href="/register">Register<span class="sr-only">(current)</span></a></li>
                   {% else %}
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"><!--{{ session['username'] }}<span class="caret">--><img id="user-image" src="../static/user_icon.png"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"><img id="user-image" src="{{ url_for('static', filename='user_icon.png') }}"></span></a>
                       <ul class="dropdown-menu">
                           <li><a href="/profile">View Profile</a></li>
                           <li><a href="/create_event">Create Event</a></li>
