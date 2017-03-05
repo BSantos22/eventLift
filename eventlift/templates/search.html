@@ -21,13 +21,23 @@
                     {% for result in results %}
                         {% if results[0]|length == 5 %}
                             <div onclick="window.location.href='event/{{ result[4] }}'" class="result-container list-group-item">
+                            <h2> {{ result[0] }} </h2>
+                            <h3> {{ result[1] }} </h3>
+                            <h4> {{ result[2] }} -  {{ result[3]}} </h4>
                         {% elif results[0]|length == 13 %}
                             <div onclick="window.location.href='lift/{{ result[12] }}'" class="result-container list-group-item">
-                        {% endif %}
+                            {% if result[3] == "Yes" %}
+                            <span class="glyphicon glyphicon-transfer two-way"></span>
+                            {% endif %}
+                            <h3>{{ result[5] }} - {{ result[4] }}</h3>
+                            <p>By: {{ result[0] }}</p>
+                            <p class="lift-price">{{ result[2] }}€</p>
+                            <p>{{ result[7] }}/{{ result[6] }} places left</p>
 
-                        <h2> {{ result[0] }} </h2>
-                        <h3> {{ result[1] }} </h3>
-                        <h4> {{ result[2] }} -  {{ result[3]}} </h4>
+
+                        {% endif %}
+                            
+                        
 
                         </div>
                     {% endfor %}

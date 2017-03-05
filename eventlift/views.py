@@ -12,7 +12,18 @@ def search():
     search = request.args.get('search')
     searchtype = request.args.get('searchtype')
     if searchtype == "lift":
-        results = models.search_lifts(search)
+        lifts = models.search_lifts(search)
+        results = []
+        for lift in lifts:
+            ll = list(lift)
+            results.append(ll)
+
+        for lift in results:
+            lift[0] = (models.get_username_by_id(lift[0]))[0][0]
+            if lift[3] == 1:
+                lift[3] = "Yes"
+            else:
+                lift[3] = "No"
     elif searchtype == "event":
         results = models.search_events(search)
     else:
