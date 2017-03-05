@@ -10,7 +10,6 @@ body {
     position: relative;
     background: #000 url("../static/Untitled.png") center center;
     width: 100%;
-
     background-size: cover;
     overflow: hidden;
 }
@@ -20,8 +19,16 @@ body {
 }
 
 .info {
-  border-radius: 10px;
-  margin: 10px;
-  color: white;
-  background-color: #0D47A1;
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+    border-radius: 10px;
+    margin: 10px;
+    color: white;
+    background-color: #0D47A1;
+}
+
+.row-center {
+    text-align: center;
 }
