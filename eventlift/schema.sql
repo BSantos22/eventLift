@@ -29,7 +29,7 @@ CREATE TABLE Lifts(
     lftime VARCHAR(32) NOT NULL,
     lfplace VARCHAR(32) NOT NULL,
     numseats INTEGER NOT NULL,
-    emptyseats INTEGER NOT NULL CHECK(emptyseats > 0)
+    emptyseats INTEGER NOT NULL CHECK(emptyseats >= 0)
 );
 
 CREATE TABLE Reservations(
