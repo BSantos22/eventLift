@@ -15,12 +15,20 @@ body {
     color: white;
 }
 
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background: none;
+  box-shadow: none;
+}
+
 #brand-image {
     max-height: 65px;
 }
 
 #user-image {
     max-height: 35px;
+    margin: -10px;
 }
 
 #navbar{

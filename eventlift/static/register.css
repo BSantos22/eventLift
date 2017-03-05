@@ -1,7 +1,5 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #2196f3;
+#content {
+    margin-top: 70px;
 }
 
 .form-register {

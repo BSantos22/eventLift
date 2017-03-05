@@ -2,21 +2,25 @@
 <link rel="stylesheet" type="text/css" href="../static/login.css"> {% endblock %} {% block content %}
 
 <div class="container">
-    <form class="form-signin" method="post">
-        <h2 class="form-signin-heading text-center">Sign In</h2>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="text" name="username" class="form-control" id="firstElem" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" class="form-control" id="lastElem" placeholder="Password" required>
-        {% if state == "wrong" %}
-        <div class="alert alert-danger" role="alert">Wrong username or password.</div>
-        {% endif %}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <div class="row">
+                <div class="jumbotron">
+                    <form class="form-signin" method="post">
+                        <h2 class="form-signin-heading text-center">Sign In</h2>
+                        <label for="inputEmail" class="sr-only">Username</label>
+                        <input type="text" name="username" class="form-control" id="firstElem" placeholder="Username" required autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" name="password" class="form-control" id="lastElem" placeholder="Password" required>
+                        {% if state == "wrong" %}
+                        <div class="alert alert-danger" role="alert">Wrong username or password.</div>
+                        {% endif %}
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /container -->
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 {% endblock %}

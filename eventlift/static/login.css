@@ -1,7 +1,5 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+#content {
+    margin-top: 70px;
 }
 
 .form-signin {
@@ -38,9 +36,6 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
-
-
 
 #firstElem {
   border-top-left-radius: 5px;
