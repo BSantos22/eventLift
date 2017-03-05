@@ -9,12 +9,11 @@
             <div class="col-lg-6 col-md-offset-3">
                 <div class="input-group">
                     <form class="form-create-event" method="get" action="/search">
-                        <input name="searchtype" type="text" class="form-control" placeholder="Search Type">
-                        <!--
-                        <select name="search-type">
-                            <option value="event">Event</option>
-                            <option value="lift">Lift</option>
-                        </select>-->
+                        <input id="lift-input" type="radio" name="searchtype" value="lift" checked>
+                        <label class="searchtype-input" for="lift-input">Lift</label>
+                        <input id="event-input" type="radio" name="searchtype" value="event" checked>
+                        <label class="searchtype-input" for="event-input">Event</label>
+
                         <input name="search" type="text" class="form-control" placeholder="Search for...">
                         <span class="input-group-btn">
                           <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Search</button>

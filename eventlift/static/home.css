@@ -32,3 +32,31 @@ body {
 .row-center {
     text-align: center;
 }
+
+.searchtype-input {
+    height: 30px;
+    width: 60px;
+    background: #2196f3;
+    color: white;
+    border-radius: 6px;
+    border: 1px solid #245580;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+}
+
+input[type="radio"]:checked+label, .searchtype-input:hover {
+    background: #245580;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+button {
+    margin-top: 5px;
+}
+
+.btn {
+    border-radius: 6px !important;
+}
