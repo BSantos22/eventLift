@@ -6,6 +6,19 @@ from flask import render_template, request, redirect, url_for, session
 def index():
     return render_template('home.html')
 
+@app.route('/search', methods=['GET'])
+def search():
+    search = request.args.get('search')
+    searchtype = request.args.get('searchtype')
+    if searchtype == "lift":
+        results = models.search_lifts(search)
+    elif searchtype == "event":
+        results = models.search_events(search)
+    else:
+        return render_template('home.html')
+
+    return render_template('search.html', results=results)
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():

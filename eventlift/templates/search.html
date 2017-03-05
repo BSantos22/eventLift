@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+{% for result in results %}
+    {% for attr in result %}
+        <p> {{ attr }} </p>
+    {% endfor %}
+    <br>
+{% endfor %}
+
+{% endblock %}

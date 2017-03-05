@@ -144,3 +144,22 @@ def get_user_reservations(username):
     user_reservations = cur.fetchall()
     db.close()
     return user_reservations
+
+def search_lifts(search):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    print(type(search))
+    string = "%" + str(search) + "%"
+    cur.execute('SELECT * FROM Lifts l LEFT JOIN Events e ON l.event = e.rowid WHERE event LIKE ? OR lfplace LIKE ?', (string, string))
+    results = cur.fetchall()
+    db.close()
+    return results
+
+def search_events(search):
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    string = "%" + str(search) + "%"
+    cur.execute('SELECT * FROM Events WHERE local LIKE ? OR name LIKE ?', (string, string))
+    results = cur.fetchall()
+    db.close()
+    return results

@@ -8,10 +8,18 @@
             <!-- /.col-lg-6 -->
             <div class="col-lg-6 col-md-offset-3">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default btn-lg" type="button">Search</button>
-                    </span>
+                    <form class="form-create-event" method="get" action="/search">
+                        <input name="searchtype" type="text" class="form-control" placeholder="Search Type">
+                        <!--
+                        <select name="search-type">
+                            <option value="event">Event</option>
+                            <option value="lift">Lift</option>
+                        </select>-->
+                        <input name="search" type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                          <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Search</button>
+                        </span>
+                    </form>
                 </div>
                 <!-- /input-group -->
             </div>
