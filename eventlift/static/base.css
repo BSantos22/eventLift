@@ -26,3 +26,7 @@ body {
 #navbar{
   text-align: center;
 }
+
+#navbar li{
+  padding-top: 7px;
+}
