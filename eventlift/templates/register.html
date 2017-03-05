@@ -24,6 +24,12 @@
         <label for="confirmPassword" class="sr-only">Confirm Password</label>
         <input type="password" name="password2" class="form-control" id="lastElem" placeholder="Confirm Password" required>
 
+        {% if state == "wrong" %}
+        <div class="alert alert-danger" role="alert">Please make sure the passwords match.</div>
+        {% elif state == "duplicate" %}
+        <div class="alert alert-danger" role="alert">The specified username is already in use.</div>
+        {% endif %}
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     </form>
 </div>

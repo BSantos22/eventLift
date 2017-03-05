@@ -33,9 +33,9 @@ def login():
             session['username'] = username
             return redirect(url_for('index'))
         else:
-            return "Show failed login page"
+            return render_template('login.html', state="wrong")
     else:
-        return render_template('login.html')
+        return render_template('login.html', state="clean")
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -46,6 +46,9 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        password2 = request.form['password2']
+        if password != password2:
+            return render_template('register.html', state="wrong")
         email = request.form['email']
         phone = request.form['phone']
         registered = models.register_user(username, password, email, phone)
@@ -53,9 +56,9 @@ def register():
             session['username'] = username
             return redirect(url_for('index'))
         else:
-            return "Failed to register"
+            return render_template('register.html', state="duplicate")
     else:
-        return render_template('register.html')
+        return render_template('register.html', state="clean")
 
 
 @app.route('/profile')
