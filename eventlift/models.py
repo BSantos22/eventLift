@@ -168,7 +168,7 @@ def search_events(search):
 def get_lift_by_id(rowid):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    cur.execute('SELECT * FROM Lifts JOIN Events ON Lifts.event = Events.rowID WHERE Lifts.rowid=?', (rowid))
+    cur.execute('SELECT * FROM Lifts JOIN Events ON Lifts.event = Events.rowID WHERE Lifts.rowid=?', (rowid, ))
     lift = cur.fetchall()
     db.close()
-    return lift;
+    return lift

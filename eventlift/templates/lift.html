@@ -23,12 +23,11 @@
                             {% else %}
                             Yes
                             {% endif %}
-                            {{ lift }}
                         <form method="POST" action="/join_lift">
                             <input type="hidden" value="{{ liftid }}" name="lift"/>
                             <input type="number" name="seats">
                             <span class="input-group-btn">
-                              <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Search</button>
+                              <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Join Lift</button>
                             </span>
                         </form>
 
