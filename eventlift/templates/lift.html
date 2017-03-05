@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/event.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <div class="row">
+                <div class="jumbotron class1">
+
+                    <div class="event-info">
+                        <h1>{{ lift[0][8] }}</h1>
+                        <h2>{{ lift[0][9] }},  {{ lift[0][10] }} - {{ lift[0][11] }}</h2>
+                        <br>
+                        <h2> Lift: </h2>
+
+                        <h3>Time:  {{ lift[0][4] }} </h3>
+                        <h3>Local:  {{ lift[0][5] }} </h3>
+                        <h3>Seats:  {{ lift[0][6] }}/{{ lift[0][7] }} remaining </h3>
+                        <h3>Price: {{ lift[0][2] }}€ </h3>
+                        <h3>Both ways:
+                            {% if lift[0][3] == 0 %}
+                            No
+                            {% else %}
+                            Yes
+                            {% endif %}
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %} {% block footer %} {% endblock %}
+
+nome evento - 8
+local - 9
+data - 4
+lugares/lugares - 6/7
+Preço - 2
+Sentidos - 3
