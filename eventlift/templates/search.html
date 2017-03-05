@@ -13,13 +13,18 @@
                     <h1 class="text-center">Search results</h1>
                     {% if results[0]|length == 5 %}
                         <h2 class="text-center">Events</h2>
-                    {% elif results[0]|length == 9 %}
+                    {% elif results[0]|length == 13 %}
                         <h2 class="text-center">Lifts</h2>
                     {% endif %}
                     <hr>
                     <div class="list-group">
                     {% for result in results %}
-                        <div onclick="window.location.href='event/{{ result[4] }}'" class="result-container list-group-item">
+                        {% if results[0]|length == 5 %}
+                            <div onclick="window.location.href='event/{{ result[4] }}'" class="result-container list-group-item">
+                        {% elif results[0]|length == 13 %}
+                            <div onclick="window.location.href='lift/{{ result[12] }}'" class="result-container list-group-item">
+                        {% endif %}
+
                         {% for attr in result %}
                             <p> {{ attr }} </p>
                         {% endfor %}

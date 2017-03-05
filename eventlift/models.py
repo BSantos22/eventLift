@@ -150,7 +150,7 @@ def search_lifts(search):
     cur = db.cursor()
     print(type(search))
     string = "%" + str(search) + "%"
-    cur.execute('SELECT * FROM Lifts l LEFT JOIN Events e ON l.event = e.rowid WHERE event LIKE ? OR lfplace LIKE ?', (string, string))
+    cur.execute('SELECT *,l.rowid FROM Lifts l LEFT JOIN Events e ON l.event = e.rowid WHERE event LIKE ? OR lfplace LIKE ?', (string, string))
     results = cur.fetchall()
     db.close()
     return results
