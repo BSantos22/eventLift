@@ -2,11 +2,13 @@
 
 {% block head %}
 
+<link rel="stylesheet" type="text/css" href="../../static/create_lift.css">
 {% endblock %}
+
 
 {% block content %}
 
-<div class="container">
+<div class="container giro">
     <form class="form-create-event" method="post">
         <h2 class="form-create-event-heading text-center">Create lift for</h2>
         <label for="inputPrice" class="sr-only" >Price</label>
@@ -19,8 +21,6 @@
         <input type="text" name="lfplace" class="form-control" id="inputLFPlace" placeholder="Leave Place" required autofocus>
         <label for="nSeats" class="sr-only" >Number of seats</label>
         <input type="number" name="numseats" class="form-control" id="nSeats" placeholder="Number seats" min="1" required autofocus>
-        <label for="emptySeats" class="sr-only" >Empty seats</label>
-        <input type="number" name="emptyseats" class="form-control" id="emptySeats" placeholder="Empty seats" required autofocus>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
     </form>

@@ -114,14 +114,14 @@ def create_event():
 @app.route('/event/<eventid>/create_lift', methods=['POST', 'GET'])
 def create_lift(eventid):
     if request.method == 'POST':
-        ownerid = models.get_userid(session['username'])
+        ownerid = models.get_userid(session['username'])[0][0]
         price = request.form['price']
         twoway = request.form['twoway']
         lftime = request.form['lftime']
         lfplace = request.form['lfplace']
         numseats = request.form['numseats']
-        emptyseats = request.form['emptyseats']
-        if emptyseats < numseats:
+        emptyseats = numseats
+        if emptyseats <= numseats:
             create_lift = models.create_lift(ownerid, int(eventid), price, twoway, lftime, lfplace, numseats, emptyseats)
         else:
             create_lift = False;
