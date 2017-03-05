@@ -25,14 +25,12 @@ body {
 }
 
 #user-icon {
-    max-height: 35px;
-    margin: -10px;
+    font-size: 22px;
     color: #2196f3;
 }
 
 #user-icon:hover {
-    max-height: 35px;
-    margin: -10px;
+    font-size: 22px;
     color: #0D47A1;
 }
 
