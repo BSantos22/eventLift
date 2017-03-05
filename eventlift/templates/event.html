@@ -27,9 +27,10 @@
                     <h2 id="lifts-title">Lifts</h2> <button id="addlift" class="btn btn-lg btn-primary btn-block btn-search" onclick="gotocreatelift()">Add lift</button>
                     <div class="list-group">
                         {% for lift in lifts %}
-                        <div class="result-container list-group-item">
+                        <div onclick="window.location.href='/lift/{{ lift[8] }}'" class="result-container list-group-item">
                             {% if lift[3] == "Yes" %}
-                            <span class="glyphicon glyphicon-transfer two-way"></span> {% endif %}
+                            <span class="glyphicon glyphicon-transfer two-way"></span>
+                            {% endif %}
                             <h3>{{ lift[5] }} - {{ lift[4] }}</h3>
                             <p>By: {{ lift[0] }}</p>
                             <p class="lift-price">{{ lift[2] }}€</p>

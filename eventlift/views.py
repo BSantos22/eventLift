@@ -6,6 +6,7 @@ from flask import render_template, request, redirect, url_for, session
 def index():
     return render_template('home.html')
 
+
 @app.route('/search', methods=['GET'])
 def search():
     search = request.args.get('search')
@@ -94,6 +95,7 @@ def event(rowid):
             lift[3] = "No"
     return render_template('event.html', event=event, lifts=l)
 
+
 @app.route('/create_event', methods=['POST', 'GET'])
 def create_event():
     if request.method == 'POST':
@@ -111,6 +113,7 @@ def create_event():
     else:
         return render_template('create_event.html')
 
+
 @app.route('/event/<eventid>/create_lift', methods=['POST', 'GET'])
 def create_lift(eventid):
     if request.method == 'POST':
@@ -122,9 +125,10 @@ def create_lift(eventid):
         numseats = request.form['numseats']
         emptyseats = numseats
         if emptyseats <= numseats:
-            create_lift = models.create_lift(ownerid, int(eventid), price, twoway, lftime, lfplace, numseats, emptyseats)
+            create_lift = models.create_lift(ownerid, int(
+                eventid), price, twoway, lftime, lfplace, numseats, emptyseats)
         else:
-            create_lift = False;
+            create_lift = False
 
         if create_lift:
             return redirect(url_for('event', rowid=eventid))
@@ -133,7 +137,16 @@ def create_lift(eventid):
     else:
         return render_template('create_lift.html')
 
+
 @app.route('/lift/<liftid>')
 def view_lift(liftid):
     lift = models.get_lift_by_id(liftid)
-    return render_template('lift.html', lift=lift)
+    return render_template('lift.html', lift=lift, liftid=liftid)
+
+
+@app.route('/join_lift', methods=['POST'])
+def join_lift():
+    liftid = request.form['lift']
+    numseats = request.form['seats']
+    models.create_reservation(session['username'], liftid, numseats)
+    return redirect(url_for('view_lift', liftid=liftid))

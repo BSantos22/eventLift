@@ -58,7 +58,7 @@ def get_lifts_from_event(name, local):
     event = get_event(name, local)
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    cur.execute('SELECT * FROM Lifts WHERE event=?', (event[0][4],))
+    cur.execute('SELECT *, rowid FROM Lifts WHERE event=?', (event[0][4],))
     lifts = cur.fetchall()
     db.close()
     return lifts
@@ -77,6 +77,7 @@ def create_event(name, local, stdate, endate):
     else:
         return False
 
+
 def create_lift(owner, event, price, twoway, lftime, lfplace, numseats, emptyseats):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
@@ -85,21 +86,16 @@ def create_lift(owner, event, price, twoway, lftime, lfplace, numseats, emptysea
     db.close()
     return True
 
-def create_reservation(name, local, numseats):
-    username = session['username']
-    userid = get_userid(username)
-    event = get_event(name, local)
 
-    if event:
-        db = sqlite3.connect(DATABASE)
-        cur = db.cursor()
-        cur.execute('INSERT INTO Reservations(event, user, numseats) VALUES (?,?,?)',
-                    (event['rowid'], userid, numseats))
-        db.commit()
-        db.close()
-        return True
-    else:
-        return False
+def create_reservation(username, liftid, numseats):
+    userid = get_userid(username)
+    db = sqlite3.connect(DATABASE)
+    cur = db.cursor()
+    cur.execute('INSERT INTO Reservations(lift, user, numseats) VALUES (?,?,?)',
+                (liftid, userid[0][0], numseats))
+    db.commit()
+    db.close()
+    return True
 
 
 def get_userid(username):
@@ -119,6 +115,7 @@ def get_user_data(username):
     db.close()
     return userdata
 
+
 def get_username_by_id(rowid):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
@@ -126,6 +123,7 @@ def get_username_by_id(rowid):
     name = cur.fetchall()
     db.close()
     return name
+
 
 def get_user_lifts(username):
     db = sqlite3.connect(DATABASE)
@@ -136,6 +134,7 @@ def get_user_lifts(username):
     db.close()
     return user_lifts
 
+
 def get_user_reservations(username):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
@@ -144,6 +143,7 @@ def get_user_reservations(username):
     user_reservations = cur.fetchall()
     db.close()
     return user_reservations
+
 
 def search_lifts(search):
     db = sqlite3.connect(DATABASE)
@@ -154,6 +154,7 @@ def search_lifts(search):
     db.close()
     return results
 
+
 def search_events(search):
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
@@ -162,6 +163,7 @@ def search_events(search):
     results = cur.fetchall()
     db.close()
     return results
+
 
 def get_lift_by_id(rowid):
     db = sqlite3.connect(DATABASE)

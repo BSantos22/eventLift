@@ -1,7 +1,4 @@
-{% extends "base.html" %}
-{% block header %}
-{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% block header %} {% endblock %} {% block content %}
 <link rel="stylesheet" type="text/css" href="../static/event.css">
 
 <div class="container">
@@ -26,6 +23,14 @@
                             {% else %}
                             Yes
                             {% endif %}
+                            {{ lift }}
+                        <form method="POST" action="/join_lift">
+                            <input type="hidden" value="{{ liftid }}" name="lift"/>
+                            <input type="number" name="seats">
+                            <span class="input-group-btn">
+                              <button class="btn btn-lg btn-primary btn-block btn-search" type="submit">Search</button>
+                            </span>
+                        </form>
 
                     </div>
 
@@ -36,13 +41,4 @@
     </div>
 </div>
 
-
-
 {% endblock %} {% block footer %} {% endblock %}
-
-nome evento - 8
-local - 9
-data - 4
-lugares/lugares - 6/7
-Preço - 2
-Sentidos - 3
